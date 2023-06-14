@@ -1,18 +1,37 @@
+import javax.swing.plaf.metal.MetalIconFactory.FolderIcon16;
+
 public class test {
     public static void main(String[] args) {
-        String name="0123456789";
-        Scoreboard e= new Scoreboard(10);
-        for(int i=0;i<10;i++){
-            GameEntry a=new GameEntry(name, i);
-            e.add(a);
-            
+        SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
+
+        System.out.println("Is the list empty? " + list.isEmpty()); // Should be true
+        System.out.println("Size of list: " + list.size()); // Should be 0
+
+        // Test removing from an empty list
+        System.out.println("Removed: " + list.removeFirst()); // Should be null
+
+        // Add elements to the list
+        for (int i = 0; i < 10; i++) {
+            list.addFirst(i);
+            System.out.println("Added " + i + " to the front of the list.");
         }
-        //GameEntry extra=new GameEntry("ei", 10);
-        //e.add(extra);
-        //
-        System.out.println(e.getNumboard());
-        System.out.println(e.remove(5).toString());
-        System.out.println(e.getNumboard());
+
+        System.out.println("Is the list empty? " + list.isEmpty()); // Should be false
+        System.out.println("Size of list: " + list.size()); // Should be 10
+
+        // Test retrieving first and last elements
+        System.out.println("First element: " + list.first()); // Should be 9
+        System.out.println("Last element: " + list.last()); // Should be 0
+
+        // Test removing elements
+        while (!list.isEmpty()) {
+            System.out.println("Removed " + list.removeFirst() + " from the front of the list.");
+        }
+
+        System.out.println("Is the list empty? " + list.isEmpty()); // Should be true
+        System.out.println("Size of list: " + list.size()); // Should be 0
     }
-    
 }
+
+    
+
