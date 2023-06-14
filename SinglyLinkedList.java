@@ -1,4 +1,4 @@
-import javax.swing.text.html.HTMLDocument.RunElement;
+
 
 public class SinglyLinkedList<E> {
     public static class node<E>{
@@ -87,4 +87,32 @@ public class SinglyLinkedList<E> {
         return temp;
         
     }
+
+    public boolean equals(Object o){
+        if (o==null){
+            return false;
+        }
+
+        if(getClass() != o.getClass()){
+            return false;
+        }
+
+        SinglyLinkedList other = (SinglyLinkedList) o;
+
+        if(size != other.size){
+            return false;
+        }
+        node<E> walkA=head;
+        node walkB=other.head;
+
+        while(walkA != null){
+            if(!walkA.getElement().equals(walkB.getElement())){
+                return false;
+            }
+            walkA=walkA.getNext();
+            walkB=walkB.getNext();
+        }
+        return true;
+    }
+
 }

@@ -1,6 +1,3 @@
-import javax.swing.text.html.HTMLDocument.RunElement;
-import javax.xml.crypto.KeySelector.Purpose;
-
 public class DoublyLinkedList<E> {
     public static class node<E>{
         private E element;
