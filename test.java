@@ -1,44 +1,50 @@
-
 public class test {
 
-    public static long FF(long n) throws IllegalArgumentException{
-        if(n<0){
-            throw new IllegalArgumentException();
-        }
-        else if(n==0){
-            return 1;
-        }
-        return n*FF(n-1);
+    public static boolean isMatched(String exp){
+        String op ="({[";
+        String ed="]})";
+        Stack<Character> check = new LinkedListStack<>();
+        for(char c : exp.toCharArray()){
+            if(op.indexOf('c')!=-1 ){
+                check.push(c);
+            }
+            else if(ed.indexOf(c)!=-1){
+                if(check.isEmpty()){
+                    return false;
+                }
+                if(ed.indexOf(check.pop())!=-1){
+                    return false;
+                }
+            }
+        }  
+
+        return check.isEmpty();
     }
-
-    public static long FF0(long n){
-        long t=n;
-        for (int i = 1; i < t; i++) {
-            n=n*i;
-        }
-        return n;
-
-    }
-
-    public static void main(String[] args) {
-        double start1 = System.currentTimeMillis();
-        System.out.println(FF(-1));
-        double end1 = System.currentTimeMillis();
-        System.out.println(start1);
-        System.out.println(end1);
-
-        double start2 = System.currentTimeMillis();
-        
-        System.out.println(FF0(20));
-        double end2 = System.currentTimeMillis();
-        System.out.println(end2);
-
-        
-        
-
+    final static String[] valid = {
+        "()(()){([()])}",
+        "( ) ( ( ) ) {( [ ( )  ] ) } ",
+        "(3) (3 + (4 - 5) ) {( [ ( )  ] ) } ",
+        "((()(()){([()])}))",
+        "[(5+x)-(y+z)]"
+      };
     
+      final static String[] invalid = {
+        ")(()){([()])}",
+        "({[])}",
+        "("
+      };
+    
+      public static void main(String[] args) {
+    
+        for (String s : invalid)
+          if (!isMatched(s))
+            System.out.println("Error evaluating valid: " + s);
+    
+        
+    
+      }
     }
-}
+
 
     
 
